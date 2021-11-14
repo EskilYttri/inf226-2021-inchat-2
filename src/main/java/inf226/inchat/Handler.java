@@ -63,7 +63,9 @@ public class Handler extends AbstractHandler
   {
     System.err.println("Got a request for \"" + target + "\"");
     final Map<String,Cookie> cookies = getCookies(request);
-
+    //CSP For every site on our page.
+      response.addHeader("Content-Security-Policy", "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self'; frame-ancestors 'none';");
+      response.addHeader("X-Frame-Options", "DENY");
     // Pages which do not require login
     if (target.equals("/style.css")) {
         serveFile(response,style,"text/css;charset=utf-8");

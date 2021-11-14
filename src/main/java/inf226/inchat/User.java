@@ -6,15 +6,15 @@ import java.time.Instant;
  * about a user.
  **/
 public final class User {
-    public final String name;
+    public final UserName name;
     public final Instant joined;
 
     public User(String name,
                 Instant joined) {
-        this.name = name;
+        this.name = new UserName(name);
         this.joined = joined;
     }
-    
+
     /**
      * Create a new user.
      */
@@ -22,4 +22,3 @@ public final class User {
         return new User(name, Instant.now());
     }
 }
-
